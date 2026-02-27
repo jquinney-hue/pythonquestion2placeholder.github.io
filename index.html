@@ -175,7 +175,7 @@
     "body": "calculate the total weight of 5 parcels.",
     "steps": [
       "prompt the user to enter the weight of each parcel",
-      "use a for loop to repeat this input process for 5 parcels",
+      "use a loop to repeat this input process for 5 parcels",
       "calculate the total weight of all parcels",
       "output the total weight in an appropriate message"
     ],
@@ -186,7 +186,7 @@
     "body": "count how many sunny days there were in a 30-day month.",
     "steps": [
       "prompt the user to enter the weather for each day",
-      "use a for loop to repeat this input process for 30 days",
+      "use a loop to repeat this input process for 30 days",
       "count how many days the weather was sunny",
       "output the number of sunny days in an appropriate message"
     ],
@@ -197,7 +197,7 @@
     "body": "calculate the average height of 11 players on a team.",
     "steps": [
       "prompt the user to enter the height for each player in cm",
-      "use a for loop to repeat this input process for 11 players",
+      "use a loop to repeat this input process for 11 players",
       "calculate the average height",
       "output the average height in an appropriate message"
     ],
@@ -208,7 +208,7 @@
     "body": "determine the highest score achieved by 15 students in a test.",
     "steps": [
       "prompt the user to enter the score for each student",
-      "use a for loop to repeat this input process for 15 students",
+      "use a loop to repeat this input process for 15 students",
       "determine which score is the highest",
       "output the highest score in an appropriate message"
     ],
@@ -219,7 +219,7 @@
     "body": "calculate the total distance run over 7 days.",
     "steps": [
       "prompt the user to enter the distance run each day",
-      "use a for loop to repeat this input process for 7 days",
+      "use a loop to repeat this input process for 7 days",
       "calculate the total distance run",
       "output the total distance in an appropriate message"
     ],
@@ -230,7 +230,7 @@
     "body": "output the first 10 multiples of a given integer.",
     "steps": [
       "prompt the user to enter an integer",
-      "use a for loop to calculate the first 10 multiples of this number",
+      "use a loop to calculate the first 10 multiples of this number",
       "output each multiple in a clear format"
     ],
     "answer": "number = int(input(\"Enter an integer: \"))\nfor i in range(1, 11):\n    print(number, \"x\", i, \"=\", number * i)"
@@ -239,7 +239,7 @@
     "short": "Sum of odd numbers from 1 to 50",
     "body": "calculate the sum of all odd integers from 1 to 50.",
     "steps": [
-      "use a for loop to go through each odd integer from 1 to 50",
+      "use a loop to go through each odd integer from 1 to 50",
       "add each integer to a running total",
       "output the final total in an appropriate message"
     ],
@@ -249,7 +249,7 @@
     "short": "Count negative numbers out of 20",
     "body": "count how many of 20 integers entered by the user are negative.",
     "steps": [
-      "use a for loop to prompt the user to enter 20 integers",
+      "use a loop to prompt the user to enter 20 integers",
       "check each integer to see if it is negative",
       "count how many of the numbers are negative",
       "output the count of negative numbers in an appropriate message"
@@ -261,7 +261,7 @@
     "body": "determine the lowest temperature recorded over a 14-day period.",
     "steps": [
       "prompt the user to enter the temperature for each day",
-      "use a for loop to repeat this input process for 14 days",
+      "use a loop to repeat this input process for 14 days",
       "determine which temperature is the lowest",
       "output the lowest temperature in an appropriate message"
     ],
@@ -272,7 +272,7 @@
     "body": "calculate the total calories consumed across 3 meals.",
     "steps": [
       "prompt the user to enter the calories for each meal",
-      "use a for loop to repeat this input process for 3 meals",
+      "use a loop to repeat this input process for 3 meals",
       "calculate the total calories consumed",
       "output the total calories in an appropriate message"
     ],
@@ -286,7 +286,7 @@ const whileQuestions = [
     "body": "calculate the total of a list of integers entered by the user until a sentinel value of 999 is entered.",
     "steps": [
       "prompt the user to enter an integer",
-      "use a while loop to repeat this input process until the user enters 999",
+      "use a loop to repeat this input process until the user enters 999",
       "add each integer (except 999) to a running total",
       "output the final total in an appropriate message"
     ],
@@ -297,7 +297,7 @@ const whileQuestions = [
     "body": "count how many words are entered by the user until they enter the word 'stop'.",
     "steps": [
       "prompt the user to enter a word",
-      "use a while loop to repeat this input process until the user enters 'stop'",
+      "use a loop to repeat this input process until the user enters 'stop'",
       "count how many words are entered (not including 'stop')",
       "output the count in an appropriate message"
     ],
@@ -308,7 +308,7 @@ const whileQuestions = [
     "body": "keep asking the user for a PIN until the correct PIN is entered. The check_pin() function takes a single parameter for PIN and returns true if a valid PIN has been entered.",
     "steps": [
       "prompt the user to enter a PIN",
-      "use a while loop to repeat this input process until the user enters the correct PIN",
+      "use a loop to repeat this input process until the user enters the correct PIN",
       "output an appropriate message when the correct PIN is entered"
     ],
     "answer": "pin = input(\"Enter PIN: \")\nwhile not check_pin(pin):\n    print(\"Incorrect PIN.\")\n    pin = input(\"Enter PIN: \")\n\nprint(\"PIN accepted. Access granted.\")"
@@ -318,7 +318,7 @@ const whileQuestions = [
     "body": "output the sequence of a starting number doubling until it exceeds 1000.",
     "steps": [
       "prompt the user to enter a starting positive integer",
-      "use a while loop to output the current value and then double it",
+      "use a loop to output the current value and then double it",
       "repeat until the value exceeds 1000",
       "output an appropriate final message"
     ],
@@ -329,7 +329,7 @@ const whileQuestions = [
     "body": "keep adding amounts entered by the user until the total savings reaches at least 500.",
     "steps": [
       "set the running total to 0",
-      "use a while loop that continues while the total is less than 500",
+      "use a loop that continues while the total is less than 500",
       "inside the loop, prompt the user to enter an amount and add it to the total",
       "output the final total in an appropriate message"
     ],
@@ -340,7 +340,7 @@ const whileQuestions = [
     "body": "keep asking the user to enter a number until they enter a negative number.",
     "steps": [
       "prompt the user to enter a number",
-      "use a while loop to repeat this input process while the number is zero or positive",
+      "use a loop to repeat this input process while the number is zero or positive",
       "output the negative number in an appropriate message when it is entered"
     ],
     "answer": "number = float(input(\"Enter a number: \"))\nwhile number >= 0:\n    print(\"That number is positive or zero.\")\n    number = float(input(\"Enter a number: \"))\n\nprint(\"Negative number entered:\", number)"
@@ -350,7 +350,7 @@ const whileQuestions = [
     "body": "ask the user if they want to continue repeatedly until they enter 'no'.",
     "steps": [
       "prompt the user asking if they want to continue (yes/no)",
-      "use a while loop to repeat this prompt until the user enters 'no'",
+      "use a loop to repeat this prompt until the user enters 'no'",
       "output an appropriate message when the program ends"
     ],
     "answer": "response = input(\"Do you want to continue? (yes/no): \")\nwhile response.lower() != \"no\":\n    response = input(\"Do you want to continue? (yes/no): \")\n\nprint(\"Program terminated by user.\")"
@@ -361,7 +361,7 @@ const whileQuestions = [
     "steps": [
       "store a secret word in a variable",
       "prompt the user to enter a guess",
-      "use a while loop to repeat this input process until the user guesses the secret word",
+      "use a loop to repeat this input process until the user guesses the secret word",
       "output an appropriate message when the correct word is guessed"
     ],
     "answer": "secret_word = \"python\"\nguess = input(\"Guess the secret word: \")\nwhile guess.lower() != secret_word:\n    print(\"Incorrect guess.\")\n    guess = input(\"Guess the secret word: \")\n\nprint(\"Congratulations! You guessed it.\")"
@@ -371,7 +371,7 @@ const whileQuestions = [
     "body": "calculate the average of a list of scores entered by the user until a sentinel value of -10 is entered.",
     "steps": [
       "prompt the user to enter a score",
-      "use a while loop to repeat this input process until the user enters -10",
+      "use a loop to repeat this input process until the user enters -10",
       "keep a running total and a count of how many scores are entered (except -10)",
       "calculate and output the average in an appropriate message"
     ],
@@ -382,7 +382,7 @@ const whileQuestions = [
     "body": "find the smallest integer entered by the user until a sentinel value of 0 is entered.",
     "steps": [
       "prompt the user to enter an integer",
-      "use a while loop to repeat this input process until the user enters 0",
+      "use a loop to repeat this input process until the user enters 0",
       "keep track of the smallest integer entered (except 0)",
       "output the smallest integer in an appropriate message"
     ],
