@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For & While Loop Practice – Exam Style</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: #f4f4f8;
+    }
+    .app {
+      display: flex;
+      height: 100vh;
+    }
+    aside {
+      width: 32%;
+      max-width: 360px;
+      min-width: 260px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid #ddd;
+      overflow-y: auto;
+    }
+    aside h2 {
+      margin: 0;
+      padding: 16px 20px;
+      background: #192a56;
+      color: white;
+      font-size: 1rem;
+    }
+    .accordion-section {
+      border-bottom: 1px solid #ddd;
+    }
+    .accordion-header {
+      padding: 12px 16px;
+      background: #f0f0f5;
+      cursor: pointer;
+      font-weight: bold;
+      user-select: none;
+    }
+    .accordion-header:hover {
+      background: #e6e6ee;
+    }
+    .accordion-content {
+      display: none;
+      padding: 0;
+    }
+    .question-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .question-list li {
+      padding: 10px 16px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .question-list li:hover {
+      background: #f0f4ff;
+    }
+    .question-list li.active {
+      background: #dfe8ff;
+      font-weight: 600;
+    }
+    main {
+      flex: 1;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+    #meta {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    #questionText {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 16px 18px;
+      border: 1px solid #ddd;
+      max-height: 40vh;
+      overflow-y: auto;
+      font-size: 0.95rem;
+    }
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      font-family: "Consolas", monospace;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    button {
+      border: none;
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      background: #192a56;
+      color: white;
+    }
+    button.secondary {
+      background: #e0e0e0;
+      color: #222;
+    }
+    #answerReveal {
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: Consolas, monospace;
+      white-space: pre-wrap;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside>
+    <h2>Loop Algorithm Practice – Exam Style</h2>
+    <div class="accordion-section">
+      <div class="accordion-header">For Loop Questions (10)</div>
+      <div class="accordion-content">
+        <ul class="question-list" id="forLoopList"></ul>
+      </div>
+    </div>
+    <div class="accordion-section">
+      <div class="accordion-header">While Loop Questions (10)</div>
+      <div class="accordion-content">
+        <ul class="question-list" id="whileLoopList"></ul>
+      </div>
+    </div>
+  </aside>
+  <main>
+    <div>
+      <h1>Interactive Algorithm Activity</h1>
+      <div id="meta">Select a question from the left.</div>
+    </div>
+    <div id="questionText">
+      <em>Please choose a question to begin.</em>
+    </div>
+    <label><strong>Your answer:</strong></label>
+    <textarea id="answerBox" placeholder="Write your algorithm or Python code here..."></textarea>
+    <div class="controls">
+      <button id="prevQuestion">Previous</button>
+      <button id="nextQuestion">Next</button>
+      <button id="clearAnswer" class="secondary">Clear</button>
+      <button id="checkAnswer">Check Answer</button>
+    </div>
+    <div id="answerReveal"></div>
+  </main>
+</div>
+
+<script>
+  const forQuestions = [
+  {
+    "short": "Total weight of 5 parcels",
+    "body": "calculate the total weight of 5 parcels.",
+    "steps": [
+      "prompt the user to enter the weight of each parcel",
+      "use a for loop to repeat this input process for 5 parcels",
+      "calculate the total weight of all parcels",
+      "output the total weight in an appropriate message"
+    ],
+    "answer": "total = 0.0\nfor parcel in range(1, 6):\n    weight = float(input(\"Enter weight of parcel \" + str(parcel) + \": \"))\n    total = total + weight\n\nprint(\"Total weight of all parcels:\", total)"
+  },
+  {
+    "short": "Count sunny days in a month",
+    "body": "count how many sunny days there were in a 30-day month.",
+    "steps": [
+      "prompt the user to enter the weather for each day",
+      "use a for loop to repeat this input process for 30 days",
+      "count how many days the weather was sunny",
+      "output the number of sunny days in an appropriate message"
+    ],
+    "answer": "sunny_days = 0\nfor day in range(1, 31):\n    weather = input(\"Enter weather for day \" + str(day) + \": \")\n    if weather.lower() == \"sunny\":\n        sunny_days = sunny_days + 1\n\nprint(\"Number of sunny days:\", sunny_days)"
+  },
+  {
+    "short": "Average height of 11 players",
+    "body": "calculate the average height of 11 players on a team.",
+    "steps": [
+      "prompt the user to enter the height for each player in cm",
+      "use a for loop to repeat this input process for 11 players",
+      "calculate the average height",
+      "output the average height in an appropriate message"
+    ],
+    "answer": "total_height = 0\nfor player in range(1, 12):\n    height = float(input(\"Enter height for player \" + str(player) + \" in cm: \"))\n    total_height = total_height + height\n\naverage = total_height / 11\nprint(\"Average player height:\", average, \"cm\")"
+  },
+  {
+    "short": "Highest score of 15 students",
+    "body": "determine the highest score achieved by 15 students in a test.",
+    "steps": [
+      "prompt the user to enter the score for each student",
+      "use a for loop to repeat this input process for 15 students",
+      "determine which score is the highest",
+      "output the highest score in an appropriate message"
+    ],
+    "answer": "highest = None\nfor student in range(1, 16):\n    score = int(input(\"Enter score for student \" + str(student) + \": \"))\n    if highest is None or score > highest:\n        highest = score\n\nprint(\"Highest test score:\", highest)"
+  },
+  {
+    "short": "Total distance over 7 days",
+    "body": "calculate the total distance run over 7 days.",
+    "steps": [
+      "prompt the user to enter the distance run each day",
+      "use a for loop to repeat this input process for 7 days",
+      "calculate the total distance run",
+      "output the total distance in an appropriate message"
+    ],
+    "answer": "total_distance = 0.0\nfor day in range(1, 8):\n    distance = float(input(\"Enter distance run on day \" + str(day) + \": \"))\n    total_distance = total_distance + distance\n\nprint(\"Total distance run this week:\", total_distance)"
+  },
+  {
+    "short": "First 10 multiples of a number",
+    "body": "output the first 10 multiples of a given integer.",
+    "steps": [
+      "prompt the user to enter an integer",
+      "use a for loop to calculate the first 10 multiples of this number",
+      "output each multiple in a clear format"
+    ],
+    "answer": "number = int(input(\"Enter an integer: \"))\nfor i in range(1, 11):\n    print(number, \"x\", i, \"=\", number * i)"
+  },
+  {
+    "short": "Sum of odd numbers from 1 to 50",
+    "body": "calculate the sum of all odd integers from 1 to 50.",
+    "steps": [
+      "use a for loop to go through each odd integer from 1 to 50",
+      "add each integer to a running total",
+      "output the final total in an appropriate message"
+    ],
+    "answer": "total = 0\nfor number in range(1, 51, 2):\n    total = total + number\n\nprint(\"Sum of odd numbers from 1 to 50:\", total)"
+  },
+  {
+    "short": "Count negative numbers out of 20",
+    "body": "count how many of 20 integers entered by the user are negative.",
+    "steps": [
+      "use a for loop to prompt the user to enter 20 integers",
+      "check each integer to see if it is negative",
+      "count how many of the numbers are negative",
+      "output the count of negative numbers in an appropriate message"
+    ],
+    "answer": "count_negative = 0\nfor i in range(1, 21):\n    number = int(input(\"Enter integer \" + str(i) + \": \"))\n    if number < 0:\n        count_negative = count_negative + 1\n\nprint(\"Number of negative integers entered:\", count_negative)"
+  },
+  {
+    "short": "Lowest temperature over 14 days",
+    "body": "determine the lowest temperature recorded over a 14-day period.",
+    "steps": [
+      "prompt the user to enter the temperature for each day",
+      "use a for loop to repeat this input process for 14 days",
+      "determine which temperature is the lowest",
+      "output the lowest temperature in an appropriate message"
+    ],
+    "answer": "lowest = None\nfor day in range(1, 15):\n    temp = float(input(\"Enter temperature for day \" + str(day) + \": \"))\n    if lowest is None or temp < lowest:\n        lowest = temp\n\nprint(\"Lowest temperature in the 14-day period:\", lowest)"
+  },
+  {
+    "short": "Total calories over 3 meals",
+    "body": "calculate the total calories consumed across 3 meals.",
+    "steps": [
+      "prompt the user to enter the calories for each meal",
+      "use a for loop to repeat this input process for 3 meals",
+      "calculate the total calories consumed",
+      "output the total calories in an appropriate message"
+    ],
+    "answer": "total_calories = 0\nfor meal in range(1, 4):\n    calories = int(input(\"Enter calories for meal \" + str(meal) + \": \"))\n    total_calories = total_calories + calories\n\nprint(\"Total calories consumed:\", total_calories)"
+  }
+];
+
+const whileQuestions = [
+  {
+    "short": "Sum numbers until 999 is entered",
+    "body": "calculate the total of a list of integers entered by the user until a sentinel value of 999 is entered.",
+    "steps": [
+      "prompt the user to enter an integer",
+      "use a while loop to repeat this input process until the user enters 999",
+      "add each integer (except 999) to a running total",
+      "output the final total in an appropriate message"
+    ],
+    "answer": "total = 0\nnumber = int(input(\"Enter an integer (999 to finish): \"))\nwhile number != 999:\n    total = total + number\n    number = int(input(\"Enter an integer (999 to finish): \"))\n\nprint(\"Total of all numbers entered:\", total)"
+  },
+  {
+    "short": "Count words until 'stop'",
+    "body": "count how many words are entered by the user until they enter the word 'stop'.",
+    "steps": [
+      "prompt the user to enter a word",
+      "use a while loop to repeat this input process until the user enters 'stop'",
+      "count how many words are entered (not including 'stop')",
+      "output the count in an appropriate message"
+    ],
+    "answer": "count = 0\nword = input(\"Enter a word ('stop' to finish): \")\nwhile word.lower() != \"stop\":\n    count = count + 1\n    word = input(\"Enter a word ('stop' to finish): \")\n\nprint(\"Number of words entered:\", count)"
+  },
+  {
+    "short": "PIN check until correct",
+    "body": "keep asking the user for a PIN until the correct PIN is entered. The check_pin() function takes a single parameter for PIN and returns true if a valid PIN has been entered.",
+    "steps": [
+      "prompt the user to enter a PIN",
+      "use a while loop to repeat this input process until the user enters the correct PIN",
+      "output an appropriate message when the correct PIN is entered"
+    ],
+    "answer": "pin = input(\"Enter PIN: \")\nwhile not check_pin(pin):\n    print(\"Incorrect PIN.\")\n    pin = input(\"Enter PIN: \")\n\nprint(\"PIN accepted. Access granted.\")"
+  },
+  {
+    "short": "Double value until exceeds 1000",
+    "body": "output the sequence of a starting number doubling until it exceeds 1000.",
+    "steps": [
+      "prompt the user to enter a starting positive integer",
+      "use a while loop to output the current value and then double it",
+      "repeat until the value exceeds 1000",
+      "output an appropriate final message"
+    ],
+    "answer": "value = int(input(\"Enter starting value: \"))\nwhile value <= 1000:\n    print(value)\n    value = value * 2\n\nprint(\"Value has exceeded 1000.\")"
+  },
+  {
+    "short": "Accumulate savings until 500 reached",
+    "body": "keep adding amounts entered by the user until the total savings reaches at least 500.",
+    "steps": [
+      "set the running total to 0",
+      "use a while loop that continues while the total is less than 500",
+      "inside the loop, prompt the user to enter an amount and add it to the total",
+      "output the final total in an appropriate message"
+    ],
+    "answer": "total = 0.0\nwhile total < 500:\n    amount = float(input(\"Enter deposit amount: \"))\n    total = total + amount\n\nprint(\"Savings goal reached! Total saved:\", total)"
+  },
+  {
+    "short": "Repeat until a negative number is entered",
+    "body": "keep asking the user to enter a number until they enter a negative number.",
+    "steps": [
+      "prompt the user to enter a number",
+      "use a while loop to repeat this input process while the number is zero or positive",
+      "output the negative number in an appropriate message when it is entered"
+    ],
+    "answer": "number = float(input(\"Enter a number: \"))\nwhile number >= 0:\n    print(\"That number is positive or zero.\")\n    number = float(input(\"Enter a number: \"))\n\nprint(\"Negative number entered:\", number)"
+  },
+  {
+    "short": "Continue prompt until 'no'",
+    "body": "ask the user if they want to continue repeatedly until they enter 'no'.",
+    "steps": [
+      "prompt the user asking if they want to continue (yes/no)",
+      "use a while loop to repeat this prompt until the user enters 'no'",
+      "output an appropriate message when the program ends"
+    ],
+    "answer": "response = input(\"Do you want to continue? (yes/no): \")\nwhile response.lower() != \"no\":\n    response = input(\"Do you want to continue? (yes/no): \")\n\nprint(\"Program terminated by user.\")"
+  },
+  {
+    "short": "Guess the word until correct",
+    "body": "allow the user to guess a secret word until they guess correctly.",
+    "steps": [
+      "store a secret word in a variable",
+      "prompt the user to enter a guess",
+      "use a while loop to repeat this input process until the user guesses the secret word",
+      "output an appropriate message when the correct word is guessed"
+    ],
+    "answer": "secret_word = \"python\"\nguess = input(\"Guess the secret word: \")\nwhile guess.lower() != secret_word:\n    print(\"Incorrect guess.\")\n    guess = input(\"Guess the secret word: \")\n\nprint(\"Congratulations! You guessed it.\")"
+  },
+  {
+    "short": "Average of scores until -10 entered",
+    "body": "calculate the average of a list of scores entered by the user until a sentinel value of -10 is entered.",
+    "steps": [
+      "prompt the user to enter a score",
+      "use a while loop to repeat this input process until the user enters -10",
+      "keep a running total and a count of how many scores are entered (except -10)",
+      "calculate and output the average in an appropriate message"
+    ],
+    "answer": "total = 0\ncount = 0\nscore = float(input(\"Enter a score (-10 to finish): \"))\nwhile score != -10:\n    total = total + score\n    count = count + 1\n    score = float(input(\"Enter a score (-10 to finish): \"))\n\nif count > 0:\n    average = total / count\n    print(\"Average of scores:\", average)\nelse:\n    print(\"No scores were entered.\")"
+  },
+  {
+    "short": "Find minimum until 0 entered",
+    "body": "find the smallest integer entered by the user until a sentinel value of 0 is entered.",
+    "steps": [
+      "prompt the user to enter an integer",
+      "use a while loop to repeat this input process until the user enters 0",
+      "keep track of the smallest integer entered (except 0)",
+      "output the smallest integer in an appropriate message"
+    ],
+    "answer": "minimum = None\nnumber = int(input(\"Enter an integer (0 to finish): \"))\nwhile number != 0:\n    if minimum is None or number < minimum:\n        minimum = number\n    number = int(input(\"Enter an integer (0 to finish): \"))\n\nif minimum is not None:\n    print(\"Smallest number entered:\", minimum)\nelse:\n    print(\"No valid numbers were entered.\")"
+  }
+];
+  const forList = document.getElementById("forLoopList");
+  const whileList = document.getElementById("whileLoopList");
+  const questionText = document.getElementById("questionText");
+  const answerBox = document.getElementById("answerBox");
+  const answerReveal = document.getElementById("answerReveal");
+  const meta = document.getElementById("meta");
+
+  let currentType = null;
+  let currentIndex = -1;
+
+  function buildQuestionHTML(q) {
+    let html = "";
+    html += "<p>An algorithm is required to " + q.body + "</p>";
+    html += "<p>Write an algorithm to:</p><ul>";
+    q.steps.forEach(step => {
+      html += "<li>" + step + "</li>";
+    });
+    html += "</ul>";
+    html += "<p>You must use either:</p>";
+    html += "<ul><li>OCR Exam Reference Language, or</li><li>a high-level programming language that you have studied</li></ul>";
+    return html;
+  }
+
+  function populateLists() {
+    forQuestions.forEach((q, i) => {
+      const li = document.createElement("li");
+      li.textContent = (i + 1) + ". " + q.short;
+      li.dataset.type = "for";
+      li.dataset.index = i;
+      forList.appendChild(li);
+    });
+    whileQuestions.forEach((q, i) => {
+      const li = document.createElement("li");
+      li.textContent = (i + 1) + ". " + q.short;
+      li.dataset.type = "while";
+      li.dataset.index = i;
+      whileList.appendChild(li);
+    });
+  }
+
+  populateLists();
+
+  document.querySelectorAll(".accordion-header").forEach(header => {
+    header.addEventListener("click", () => {
+      const content = header.nextElementSibling;
+      content.style.display = content.style.display === "block" ? "none" : "block";
+    });
+  });
+
+  function loadQuestion(type, index) {
+    currentType = type;
+    currentIndex = index;
+
+    document.querySelectorAll(".question-list li").forEach(li => li.classList.remove("active"));
+    const selector = '.question-list li[data-type="' + type + '"][data-index="' + index + '"]';
+    const activeItem = document.querySelector(selector);
+    if (activeItem) activeItem.classList.add("active");
+
+    const q = (type === "for" ? forQuestions : whileQuestions)[index];
+    questionText.innerHTML = buildQuestionHTML(q);
+    meta.textContent = "Question " + (index + 1) + " (" + type.toUpperCase() + " loop)";
+    answerBox.value = "";
+    answerReveal.style.display = "none";
+  }
+
+  document.addEventListener("click", (e) => {
+    if (e.target.matches(".question-list li")) {
+      const type = e.target.dataset.type;
+      const index = parseInt(e.target.dataset.index, 10);
+      loadQuestion(type, index);
+    }
+  });
+
+  document.getElementById("clearAnswer").onclick = () => {
+    answerBox.value = "";
+  };
+
+  document.getElementById("checkAnswer").onclick = () => {
+    if (currentIndex < 0) return;
+    const q = (currentType === "for" ? forQuestions : whileQuestions)[currentIndex];
+    answerReveal.textContent = q.answer;
+    answerReveal.style.display = "block";
+  };
+
+  document.getElementById("prevQuestion").onclick = () => {
+    if (currentIndex < 0) return;
+    const arr = currentType === "for" ? forQuestions : whileQuestions;
+    const newIndex = (currentIndex - 1 + arr.length) % arr.length;
+    loadQuestion(currentType, newIndex);
+  };
+
+  document.getElementById("nextQuestion").onclick = () => {
+    if (currentIndex < 0) return;
+    const arr = currentType === "for" ? forQuestions : whileQuestions;
+    const newIndex = (currentIndex + 1) % arr.length;
+    loadQuestion(currentType, newIndex);
+  };
+</script>
+</body>
+</html>
